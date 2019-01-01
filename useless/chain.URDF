@@ -1,0 +1,78 @@
+<robot name="pi_robot">
+
+    <!-- * * * Link Definitions * * * -->
+
+ <link name="Leg0">
+        <visual>
+            <origin xyz="0 0 0.0425" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.025" length="0.07"/>
+            </geometry>
+            <material name="Cyan1">
+                <color rgba="0 0.9 0.9 1.0"/>
+            </material>
+        </visual>   
+    </link>
+    
+    <link name="Leg1">
+        <visual>
+            <origin xyz="28 0 0" rpy="0 1.5707 0"/>
+            <geometry>
+                <cylinder radius="5" length="56"/>
+            </geometry>
+            <material name="Black1">
+                <color rgba="0.2 0.2 0.2 1.0"/>
+            </material>
+        </visual>   
+    </link>
+
+    <link name="Leg2">
+        <visual>
+            <origin xyz="101.12 0 0" rpy="0 1.5707 0"/>
+            <geometry>
+                <cylinder radius="5" length="202.240"/>
+            </geometry>
+            <material name="Black1">
+                <color rgba="0.2 0.2 0.2 1.0"/>
+            </material>
+        </visual>   
+    </link>
+
+
+    <link name="Leg3">
+        <visual>
+            <origin xyz="86.607 0 0" rpy="0 1.5707 0"/>
+            <geometry>
+                <cylinder radius="5" length="173.215"/>
+            </geometry>
+            <material name="Black1">
+                <color rgba="0.2 0.2 0.2 1.0"/>
+            </material>
+        </visual>   
+    </link>
+
+    <joint name="Joint0" type="revolute">
+        <parent link="Leg0"/>
+        <child link="Leg1"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <limit lower="-1.57" upper="1.57" effort="10" velocity="3"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+
+    <joint name="Joint1" type="revolute">
+        <parent link="Leg1"/>
+        <child link="Leg2"/>
+        <origin xyz="56 0 0" rpy="0 0 0"/>
+        <limit lower="-3.1415" upper="3.1415" effort="10" velocity="3"/>
+        <axis xyz="0 1 0"/>
+    </joint>
+
+    <joint name="Joint2" type="revolute">
+        <parent link="Leg2"/>
+        <child link="Leg3"/>
+        <origin xyz="202.240 0 0" rpy="0 1.5707 0"/>
+        <limit lower="-3.1415" upper="3.1415" effort="10" velocity="3"/>
+        <axis xyz="0 1 0"/>
+    </joint>
+
+</robot>

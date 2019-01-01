@@ -1,0 +1,25 @@
+ def set1PID(self , Pval = 1 , Ival = 0.1 , Dval = 0.05): 
+        self.pid1 = PID(Pval, Ival, Dval, setpoint=1)
+        self.pid1.output_limits = (0, 30000) 
+        '''
+        self.set1PID[0] = Pval
+        self.set1PID[1] = Ival
+        self.set1PID[2] = Dval
+        '''
+        
+    def set2PID(self , Pval = 1 , Ival = 0.1 , Dval = 0.05): 
+        self.pid2 = PID(Pval, Ival, Dval, setpoint=1)
+        self.pid2.output_limits = (0, 30000) 
+        '''
+        self.set2PID[0] = Pval
+        self.set2PID[1] = Ival
+        self.set2PID[2] = Dval
+        '''
+        
+    def set3PID(self , Pval = 1 , Ival = 0.1 , Dval = 0.05): 
+        self.pid3 = PID(Pval, Ival, Dval, setpoint=1)
+        self.pid3.output_limits = (0, 30000) 
+        '''
+        self.set3PID[0] = Pval
+        self.set3PID[1] = Ival
+        self.set3PID[2] = Dval     
