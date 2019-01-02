@@ -20,18 +20,7 @@ class gyro(object):
         self.serial = serial.Serial(Port,baudrate=Baudrate,timeout=Timeout)
         #self.serial.setDTR(1)
         #self.TX_DELAY_TIME = 0.000001
-
-        
-        
-
-                
-                
-                
-                
-                
-                
-                
-                
+    
                 
                 
     def receivePacket(self):
