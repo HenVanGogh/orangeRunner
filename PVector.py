@@ -7,6 +7,8 @@ Created on Dec 14, 2018
 import matplotlib.pyplot as plt
 import numpy as np
 from time import sleep
+
+from mpl_toolkits.mplot3d import Axes3D
 import math
 class PVector(object):
     def __init__(self, Base , radius):
@@ -107,6 +109,43 @@ class PVector(object):
         self.base[3][1] = self.base[3][1] - yMode[3]
         
         
+    def findPointUnderneathMainPlane(self):
+        Pes = []
+        res = []
+        for i in self.base:
+            Pes.append(i)
+            
+        res.append(self.pointUderPlane(Pes[0] , Pes[1] , Pes[2] , Pes[3]))
+        res.append(self.pointUderPlane(Pes[1] , Pes[2] , Pes[3] , Pes[0]))
+        res.append(self.pointUderPlane(Pes[2] , Pes[3] , Pes[0] , Pes[1]))
+        res.append(self.pointUderPlane(Pes[3] , Pes[0] , Pes[1] , Pes[2])) 
+        
+        return res
+            
+    def pointUderPlane(self , P1 , P2 , P3 , S):
+
+        p1 = np.array([P1[0], P1[1], P1[2]])
+        p2 = np.array([P2[0], P2[1], P2[2]])
+        p3 = np.array([P3[0], P3[1], P3[2]])
+        
+        v1 = p3 - p1
+        v2 = p2 - p1
+        
+        cp = np.cross(v1, v2)
+        a, b, c = cp
+        
+        d = np.dot(cp, p3)
+
+        yb = -(a * S[0] + c * S[2] - d) / b
+        if(S[1] < yb):
+            return True
+        else:
+            return False
+        
+    def loverBase(self , val):
+        for i in range(0 , 4):
+            self.base[i][1] += val
+        
         
             
     def result(self):
@@ -128,6 +167,8 @@ if __name__ == '__main__':
             [-150 - val_34 , 100 , -150 - val_34, 0, 0] ]
     
     vector = PVector(base , 126.8095)
+    
+    vector.findPointUnderneathMainPlane()
     stepListX = [0 for x in range(rangeOf)]
     stepListZ = [0 for x in range(rangeOf)]
     
@@ -175,6 +216,11 @@ if __name__ == '__main__':
     plt.grid(True)
     plt.savefig("test.png")
     plt.show()
+    
+    
+    
+    
+
     
     
     

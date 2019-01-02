@@ -11,18 +11,12 @@ import time
 #from adodbapi.examples.xls_write import data
 
 class gyro(object):
-    '''
-    classdocs
-    '''
-
 
     def __init__(self,Port="COM6",Baudrate=1000000, Timeout= 0.001):
         self.serial = serial.Serial(Port,baudrate=Baudrate,timeout=Timeout)
         #self.serial.setDTR(1)
         #self.TX_DELAY_TIME = 0.000001
-    
-                
-                
+                 
     def receivePacket(self):
         self.serial.flushInput()
         for i in range(0 , 9):
@@ -44,10 +38,7 @@ class gyro(object):
                 #print(data)
                 if(data != None):
                     parsed = struct.unpack('<h' , data)
-                    return parsed
-                
-    
-                
+                    return parsed           
             
     def testSpeed(self):      
         n = 0
@@ -62,20 +53,6 @@ class gyro(object):
                 someTime = time.time()
                 print(n)
                 n = 0
-            
-            
-            
-            
-        '''
-            command = self.serial.read(1)
-            if(command == 'm'):
-                if(self.serial.inWaiting() > 7):
-                    package = self.serial.readline()
-                    print(package)
-                    parsed = struct.unpack('<ff' , package)
-                    return parsed
-        '''
-                
             
     
 if __name__ == '__main__':

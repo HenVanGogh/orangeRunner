@@ -1,31 +1,6 @@
 import math
 from simple_pid import PID
 
-from ikpy.chain import Chain
-from ikpy.link import OriginLink, URDFLink
-'''
-armChain = Chain(name='armChain', links=[
-    OriginLink(),
-    URDFLink(
-      name="Leg0",
-      translation_vector=[0, 0, 0],
-      orientation=[0, 0, 0],
-      rotation=[0, 0, 1],
-    ),
-    URDFLink(
-      name="Leg1",
-      translation_vector=[10, 0, 0],
-      orientation=[0, 0, 0],
-      rotation=[0, 1, 0],
-    ),
-    URDFLink(
-      name="Leg2",
-      translation_vector=[20, 0, 0],
-      orientation=[0, 1.5707, 0],
-      rotation=[0, 1, 0],
-    )
-])
-'''
 '''
 Created on Nov 25, 2018
 
@@ -37,11 +12,7 @@ class Runner(object):
 
     def __init__(self, constant1 , constant2 , constant3):
         
-        
-        #pid = PID(Pval, Ival, Dval, setpoint=1)
-        #pid.output_limits = (0, 30000) 
-        
-        
+
         self.constant1 = constant1
         self.constant2 = constant2
         self.constant3 = constant3
@@ -86,23 +57,6 @@ class Runner(object):
 
         return self.pos
      
-     
-        
-     
-        
-    def update(self , position1 , position2 , position3):  
-        
-        self.pid1.setpoint = self.pos[0]
-        self.pid2.setpoint = self.pos[1]
-        self.pid3.setpoint = self.pos[2]
-        
-        
-        control = []  
-        control[0] = self.pid1(position1)
-        control[1] = self.pid2(position2)
-        control[2] = self.pid3(position3)
-        return control
-        
         
 if __name__ == '__main__':
     m1 = Runner(100 , 100 , 100)
